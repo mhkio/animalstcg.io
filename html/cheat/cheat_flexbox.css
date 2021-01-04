@@ -1,0 +1,108 @@
+/*
+
+- mate a posisjonere bokser (divisions)
+- tilpasse størrelse på bokser
+- endre rekkefølge på innhold i bokser
+- viktig å skille mellom containers og items
+
+Flex properties
+
+Containers
+display: flex | inline-flex
+flex-direction: row | column
+flex-wrap: wrap | nowrap | wrapreverse
+justify-content: flex-start | flex-end | center
+align-items: flex-start | flex-end | center
+align-content:: flex-start | flex-end | center
+
+Items
+align-self: flex-start | flex-end | center
+flex-grow: <number>
+flex-shrink: <number>
+flex: <integer>
+order: <integer>
+
+*/
+
+.container-1 div {
+    border: 1px #CCCCCC solid;
+    padding: 10px;
+    flex-basis: 20%;
+}
+
+.container-1 {
+    display: flex;
+    height: 500px;
+    
+    /*
+    flex-direction: row;
+    flex-direction: row-reverse;
+    flex-direction: column;
+    flex-direction: column-reverse;
+    */
+    
+    /*
+    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
+    */
+    
+    /*
+    justify-content: flex-start;
+    justify-content: flex-end;
+    justify-content: center;
+    justify-content: space-between;
+    justify-content: space-around;
+    justify-content: space-evenly;
+    */
+    
+    /*
+    align-items: stretch; default
+    align-items: flex-start;
+    align-items: flex-end;
+    align-items: center;
+    align-items: baseline;
+    */
+
+    /*
+    Align content fungerer kun når boksene ligger på flere linjer
+    */
+    /*
+    align-content: stretch; default
+    align-content: flex-start;
+    align-content: flex-end;
+    align-content: center;
+    align-content: space-between;
+    align-content: space-around;
+    */
+}
+
+/* Item */
+
+/* Order */
+#box-1 {
+    order: 3;
+}
+
+#box-2 {
+    order: 2;
+}
+
+#box-3 {
+    /* order: 1; */
+}
+
+/* Flex */
+#box-2 {
+    /* flex: 2; */
+}
+
+/* Align-self */
+#box-1 {
+    /*
+    align-self: stretch; (default)
+    align-self: flex-start;
+    align-self: flex-end;
+    align-self: center;
+    align-self: baseline;
+    */}

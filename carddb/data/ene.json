@@ -1,0 +1,81 @@
+[
+    {
+        "class" : 31,
+        "id" : "ene001",
+        "name" : "Fighting",
+        "illustrator" : null,
+        "rarity" : 1,
+        "provides" : ["F"],
+        "text" : "This card provides [F]."
+    },
+
+    {
+        "class" : 31,
+        "id" : "ene002",
+        "name" : "Fire",
+        "illustrator" : null,
+        "rarity" : 1,
+        "provides" : ["R"],
+        "text" : "This card provides [R]."
+    },
+
+    {
+        "class" : 31,
+        "id" : "ene003",
+        "name" : "Grass",
+        "illustrator" : null,
+        "rarity" : 1,
+        "provides" : ["G"],
+        "text" : "This card provides [G]."
+    },
+
+    {
+        "class" : 31,
+        "id" : "ene004",
+        "name" : "Lightning",
+        "illustrator" : null,
+        "rarity" : 1,
+        "provides" : ["L"],
+        "text" : "This card provides [L]."
+    },
+
+    {
+        "class" : 31,
+        "id" : "ene005",
+        "name" : "Psychic",
+        "illustrator" : null,
+        "rarity" : 1,
+        "provides" : ["P"],
+        "text" : "This card provides [P]."
+    },
+
+    {
+        "class" : 31,
+        "id" : "ene006",
+        "name" : "Water",
+        "illustrator" : null,
+        "rarity" : 1,
+        "provides" : ["W"],
+        "text" : "This card provides [W]."
+    },
+
+    {
+        "class" : 31,
+        "id" : "ene007",
+        "name" : "Darkness",
+        "illustrator" : null,
+        "rarity" : 1,
+        "provides" : ["D"],
+        "text" : "This card provides [D]."
+    },
+
+    {
+        "class" : 31,
+        "id" : "ene008",
+        "name" : "Metal",
+        "illustrator" : null,
+        "rarity" : 1,
+        "provides" : ["M"],
+        "text" : "This card provides [M]."
+    }
+]

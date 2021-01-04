@@ -1,0 +1,236 @@
+[
+    {
+        "class" : 11,
+        "id" : "oce001",
+        "name" : "Generic Jellyfish",
+        "illustrator" : "Magnus", 
+        "rarity" : 1,
+        "hp" : 40,
+        "type" : "C",
+        "description" : "Jellyfish",
+        "length" : 3,
+        "weight" : 1,
+        "weakness" : "F",
+        "weaknessOperator" : "x2",
+        "resistance" : null,
+        "resistanceOperator" : null,
+        "retreat" : 1,
+        "ability" : {
+            "name" : null,
+            "text" : null,
+            "keywords" : [null]
+            },
+        "attacks" :
+            [
+                [
+                    {
+                    "name" : "Smooth Skin",
+                    "cost" : ["C"],
+                    "text" : "Discard an Energy card attached to this Pokemon. If you do, prevent all effects of attack from your opponent's POkemon during their next turn.",
+                    "dmg" : null,
+                    "keywords" : ["DiscardEnergy"]
+                    }
+                ],
+                [
+                    {
+                    "name" : null,
+                    "cost" : [null],
+                    "text" : null,
+                    "dmg" : null,
+                    "keywords" : [null]
+                    }
+                ]
+            ],
+        "flavour" : "These jellies have very mild venom and therefore any jellyfish string from its stinging cells are harmless to humans. In fact, the generic jelly doesn't generally even use their venom to catch food at all!",
+        "evolvesFrom" : null
+    },
+
+    {
+        "class" : 12,
+        "id" : "oce002",
+        "name" : "Flower Jellyfish",
+        "illustrator" : "Magnus", 
+        "rarity" : 2,
+        "hp" : 70,
+        "type" : "C",
+        "description" : "Jellyfish",
+        "length" : 6,
+        "weight" : 1,
+        "weakness" : "F",
+        "weaknessOperator" : "x2",
+        "resistance" : "W",
+        "resistanceOperator" : "-30",
+        "retreat" : 2,
+        "ability" : {
+            "name" : "Ride the Wave",
+            "text" : "Once during your opponent's turn, if your opponent uses an effect of an Ability, you may have both players draw 1 card. Only 1 Ride the Wave Ability may be used each turn.",
+            "keywords" : []
+        },
+        "attacks" :
+            [
+                [
+                    {
+                    "name" : "Pulse Wave",
+                    "cost" : ["C", "C"],
+                    "text" : "This attack does 10 damage to each of your opponent's Pokemon. Each player switches their Active pokemon with one of their Benched Pokemon.",
+                    "dmg" : null,
+                    "keywords" : ["Snipe"]
+                    }
+                ],
+                [
+                    {
+                    "name" : null,
+                    "cost" : [null],
+                    "text" : null,
+                    "dmg" : null,
+                    "keywords" : [null]
+                    }
+                ]
+            ],
+        "flavour" : "These sea jellies are endemic to the Western Pacific, commonly found off the Southern Japan coast and also within the water of Brazil and Argentina.",
+        "evolvesFrom" : "Generic Jellyfish"
+    },
+
+    {
+        "class" : 12,
+        "id" : "oce003",
+        "name" : "Crystal Jellyfish",
+        "illustrator" : "Magnus", 
+        "rarity" : 3,
+        "hp" : 100,
+        "type" : "C",
+        "description" : "Jellyfish",
+        "length" : 10,
+        "weight" : 12,
+        "weakness" : "F",
+        "weaknessOperator" : "x2",
+        "resistance" : "L",
+        "resistanceOperator" : "-30",
+        "retreat" : 3,
+        "ability" : {
+            "name" : "Stinging Cells",
+            "text" : "Once during your turn, before you attack, you may use this Ability. Discard 1 card from your hand and 1 Pokemon from your Bench. If you do, your opponent's Active Pokemon is now Paralyzed",
+            "keywords" : []
+        },
+        "attacks" :
+            [
+                [
+                    {
+                    "name" : "Digest",
+                    "cost" : ["C", "C"],
+                    "text" : "If the Defending Pokemon is Knocked Out by damage from this attack, search your deck for any 2 cards and put it into your Draw Zone.",
+                    "dmg" : 20,
+                    "keywords" : [null]
+                    }
+                ],
+                [
+                    {
+                    "name" : null,
+                    "cost" : [null],
+                    "text" : null,
+                    "dmg" : null,
+                    "keywords" : [null]
+                    }
+                ]
+            ],
+        "flavour" : "located in the water around North America's coast, this jellyfish species is actually completely colorless, hence its name! This beautiful specimen has around 150 tentacles lining its glass-like bell and in the daylight it looks crystal clear. Although, this transparency belies a brighter side.",
+        "evolvesFrom" : "Flower Jellyfish"
+    },
+
+    {
+        "class" : 11,
+        "id" : "oce004",
+        "name" : "Narcomedusae",
+        "illustrator" : "Magnus", 
+        "rarity" : 1,
+        "hp" : 30,
+        "type" : "D",
+        "description" : "Jellyfish",
+        "length" : 1,
+        "weight" : 1,
+        "weakness" : "G",
+        "weaknessOperator" : "+20",
+        "resistance" : null,
+        "resistanceOperator" : null,
+        "retreat" : 0,
+        "ability" : {
+            "name" : "Stinging Tentacles",
+            "text" : "You may use this Ability when this Pokemon takes damage from your opponent's attack. Put 2 damage counters on the Defending Pokemon",
+            "keywords" : []
+        },
+        "attacks" :
+            [
+                [
+                    {
+                    "name" : "Call for Help",
+                    "cost" : ["D"],
+                    "text" : "Draw 1 card from the top of your deck, or search your deck for a Basic Pokemon and put it onto your Bench, then shuffle your deck.",
+                    "dmg" : 10,
+                    "keywords" : [null]
+                    }
+                ],
+                [
+                    {
+                    "name" : null,
+                    "cost" : null,
+                    "text" : null,
+                    "dmg" : null,
+                    "keywords" : null
+                    }
+                ]
+            ],
+        "flavour" : "Known to have a Darth Vader kind of appearance.",
+        "evolvesFrom" : null
+    },
+
+    {
+        "class" : 23,
+        "id" : "oce119",
+        "name" : "Professor Vestre",
+        "illustrator" : "Sebastian",
+        "rarity" : null,
+        "text" : "Reduce the cost of each of your Pokemon's attacks by C until the end of your turn.\nDraw 3 cards.",
+        "keywords" : null        
+    },
+
+    {
+        "class" : 24,
+        "id" : "oce120",
+        "name" : "Spring Tide",
+        "illustrator" : "Sebastian",
+        "rarity" : null,
+        "text" : "Once during your turn, you may attach 2 Basic Energy from your Discard Pile to your Pokemon as you like. Then, your turn ends.",
+        "keywords" : null        
+    },
+
+    {
+        "class" : 21,
+        "id" : "oce126",
+        "name" : "Ocean Current",
+        "illustrator" : "Magnus",
+        "rarity" : null,
+        "text" : "Search your Discard Pile for a Pokemon or a Basic Energy card and put it into your hand.",
+        "keywords" : null        
+    },
+
+    {
+        "class" : 22,
+        "id" : "oce128",
+        "name" : "Tord's Bathing Shoes",
+        "illustrator" : "Sebastian",
+        "rarity" : null,
+        "text" : "This Pokemon's HP is increased by 20.",
+        "keywords" : null        
+    },
+
+    {
+        "class" : 32,
+        "id" : "oce129",
+        "name" : "Flout Energy",
+        "illustrator" : "Magnus",
+        "rarity" : 2,
+        "provides" : null,
+        "text" : "This card provies C. While the Pokemon this card is attached to has any Basic Energy cards attached to it, and the Pokemon is not C, this card provides 2 Energy of any type, but not the same type of other Basic Energy cards attached to the Pokemon.",
+        "keywords" : null
+    }
+]

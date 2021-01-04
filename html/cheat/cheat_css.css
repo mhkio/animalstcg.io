@@ -1,0 +1,197 @@
+/*
+Dette er en kommentar
+
+Om CSS
+- handler om å utforme nettsiden vår slik som vi vil
+    - eksempel er farger, posisjonering
+- ikke et programmeringsspråk, men et stilspråk
+- det er mange måter å gjøre det samme
+
+- Det går an å skrive utforming (CSS) på tre måter:
+    1. inne i HTML-elementene
+    2. Internt: bruke <style> tags inne i HTML-dokumentet
+    3. Eksternt: ved å lenke til en egen CSS-fil :-)
+*/
+
+/*
+1. Vi kan ha en selector for alle h1-tags
+*/
+
+h1 {
+    color: coral;
+}
+
+
+/*
+2. Vi kan ha body som selector
+#f4f4f4 er en veldig fin, lys grå
+*/
+
+body {
+    background-color: #f4f4f4;
+    /* color: #555555; */
+}
+
+/*
+3. For farger kan vi bruke:
+    1. fargenavn: blue
+    2. HTML5 fargenavn: coral
+    3. heksadesimale verdier: #F4F4F4
+    4. RGB-verdier: rgb(0, 0, 255)
+
+4. Fonter
+css_font.png
+*/
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    
+    /* Skriftstørrelse */
+    /*font-size: 20px;
+    
+    /* Fet skrift */
+    /*font-weight:500;
+    
+    /* Rask måte: 
+    font: normal 16px Arial, Helvetica, sans-serif; 
+    - overskriving */
+    
+    /* linjeavstand */
+    /*line-height:30px;
+    
+    /* Decoration
+    text-decoration: underline;
+    */
+}
+
+/* 
+5. Class vs. id
+- id-er er unike
+- classes er ikke unike
+
+I HTML:
+<div id="boks-1"></div> -> #boks-1 {...}
+<div class="boks-2></div> -> .boks-2 {...}
+*/
+
+/*.boks-1 {
+    background-color: #444444;
+    color: #ffffff;
+}
+
+/*
+6. Containers: padding, border og margin
+css_box.png
+*/
+
+/* Her bruker vi id */
+/*#boks-2 {
+    background-color: #555555;
+    
+    /* ikke responsiv */
+    /* width: 960px; */
+    
+    /*width: 80%; /* 80% av hele vinduets bredde */
+    
+    /* Prøv en gang uten dette: */
+    /*margin: auto; /* margin lik på alle sider */
+/*}
+
+/*.boks-3 {
+    background-color: #333333;
+    color: #f4f4f4;
+    
+    /* Rekkefølge: top right bottom left */
+    /*margin: 50px 10px 5px 10px;
+    margin: 50px 10px;
+    margin: 50px;
+    
+    /* Border */
+    /*border-right: 5px red solid;
+    border-left: 5px red solid;
+    border-top: 5px red solid;
+    border-bottom: 5px red solid;
+    
+    border: 50px coral solid;
+    /* border-style: dotted; */
+    
+    /*padding: 50px;
+}
+
+/*
+7. Hvordan fjerne all margin og padding
+
+* {
+    margin: 0;
+    padding: 0;
+}
+*/
+
+/*.boks-4 {
+    border: 3px dotted #cccccc;
+    padding: 20px;
+    margin: 20px 0px;
+    
+}
+
+#kategorier {
+    border: 1px #cccccc solid;
+    padding: 10px;
+    
+    /* Runde kanter */
+    /*border-radius: 15px;
+    
+}
+
+/* 
+Target kun spesifikke tags/divisions inne i en division 
+*/
+#kategorier h2 {
+    text-align:right;
+}
+
+#kategorier ul {
+    padding-left: 20px;
+    list-style: square;
+    list-style: none;
+}
+
+#kategorier li {
+    padding-bottom: 8px;
+    border-bottom:dotted 1px #333333;
+}
+
+/* Triks for å gjøre linker finere */
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    color:grey;
+}
+
+#mitt-skjema {
+    padding:20px;
+    padding-bottom: 15px;
+        
+}
+
+.skjema {
+    padding-bottom:15px;
+}
+
+#mitt-skjema label {
+    display:block;
+}
+
+#mitt-skjema input[type="text"], #mitt-skjema input[type="email"], #mitt-skjema textarea {
+    padding: 8px;
+    width: 100px;
+}
+
+#mitt-skjema input[type="submit"] { /* eller .button */
+    background-color: #333333;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+}

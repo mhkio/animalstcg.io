@@ -1,0 +1,199 @@
+<!doctype html>
+
+<html> <!--HTML-tag-->
+
+<head>
+    
+    <!-- I head ligger informasjon om nettsiden -->
+    
+    <!--Sidetittel-->
+    <title>HTML Cheat Sheet</title>
+    
+    <!--Link til css-fil-->
+    <link rel="stylesheet" href="cheat_html.css"> 
+    
+    <!--Deklarasjon av tegnsetting-->
+    <meta charset="UTF-8">
+    
+</head>
+
+<body>
+
+    <h1>Overskrift 1</h1>
+    <h2>Overskrift 2</h2>
+    <h3>Overskrift 3</h3>
+    <h4>Overskrift 4</h4>
+    <h5>Overskrift 5</h5>
+    <h6>Overskrift 6</h6>
+
+    <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </p>
+
+    <p>
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+    <p>
+
+    <!-- 
+    Inline level tags: <span>, <img>, <a>
+        1. Starter ikke på en ny linje
+        2. Tar bare nødvendig bredde
+
+    Block level tags: <div>, <h1> - <h6>, <p>, <form>
+        1. Starter på en ny linje
+        2. Tar hele bredden tilgjengelig
+    -->
+
+    <p><strong>Denne teksten er fet.</strong></p>
+    <p><em>Denne teksten er i kursiv.</em></p>
+    
+    <p> Her er en link til <a href="http://google.com" target="_blank">Google</a></p>
+    
+    <!-- 
+    Attributt = egenskap
+    I tag'en <a> over er 'target' en atributt. Den gjør at lenken åpnes i en ny fane. Nøkkel = "verdi"
+    -->
+    
+<!-- Bilder -->
+    
+    <img src="bilder/bilde1.jpg" alt="Mitt bilde">
+    
+<!-- Lister -->
+    
+    <ul> <!-- Unordered list-->
+        <li>Listeelement 1</li>
+        <li>Listeelement 2</li>
+        <li>Listeelement 3</li>
+        <li>Listeelement 4</li>
+        <li>Listeelement 5</li>
+    </ul>
+    
+    <ol> <!-- Ordered list -->
+        <li>Listeelement</li>
+        <li>Listeelement</li>
+        <li>Listeelement</li>
+        <li>Listeelement</li>
+        <li>Listeelement</li>
+    </ol>
+    
+<!-- Tabell -->
+    
+    <table>
+        <!-- Table head -->
+        <thead>
+            <!-- Table row -->
+            <tr>
+                <th>Navn</th>
+                <th>Email</th>
+                <th>Alder</th>
+            </tr>
+        </thead>
+    
+        <!-- Table body -->
+        <tbody>
+            <tr>
+                <!-- Table data-->
+                <td>Clara Rasouli</td>
+                <td>clararasouli@gmail.com</td>
+                <td>21</td>
+            </tr>
+            <tr>
+                <td>Magnus Kalland</td>
+                <td>magnushellekalland@gmail.com</td>
+                <td>24</td>
+            </tr>
+        </tbody>
+    </table>
+    
+<!-- Break og horizontal rule-->
+    <br>
+    <hr>
+    <br>
+    
+<!-- Skjemaer -->
+    
+    <form action="javascript:void()" method="POST">
+
+        <!-- Snakk om div (division) -->
+        <div>
+            <label>Fornavn</label>
+            <input type="text" name="fornavn" placeholder="Fornavn">
+        </div>
+        <br>
+        <div>
+            <label>Etternavn</label>
+            <input type="text" name="etternavn" placeholder="Etternavn">
+        </div>
+        <br>
+        <div>
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Email">
+        </div>
+        <br>     
+        <div>
+        
+            <label>Melding</label>
+            <textarea name="melding" placeholder="Hva synes du om vår nettside?"></textarea>
+        
+        </div>
+        <br>
+        <div>
+        
+            <label>Kjønn</label>
+            <select name="kjønn">
+            <!-- Dropdown-meny-->
+            <option value="kvinne">Kvinne</option>
+            <option value="mann">Mann</option>
+            <option value="annet">Annet</option>
+            </select>
+        
+        </div>
+        <br>
+        <div>
+            
+            <label>Alder</label>
+            <input type="number" name="alder" value="30">
+            
+        </div>
+        <br>
+        <div>
+        
+            <label>Fødselsdato</label>
+            <input type="date" name="fødselsdato">
+        
+        </div>
+        <br>
+        <div>
+        
+            <input type="submit" name="submit" value="Send">
+        
+        </div>
+        
+    </form>
+    
+    <br>
+    
+<!-- Knapper -->
+    
+    <button>Klikk her!!!</button>
+
+
+    
+<!-- Semantiske tags
+Semantikk handler om betydningen eller funksjonen av noe. Når vi snakker om semantiske tags, vil dette være tags som forteller både oss som skriver HTML og nettleseren noe. Du kan ha flere av de samme semantiske tagsene i én fil. 
+-->
+    
+    <header></header>
+    <nav></nav>
+    <section></section>
+    <article></article>
+    <aside></aside>
+    <footer></footer>
+    
+    
+    
+    <div style="margin-top:300px"></div>
+
+</body>
+
+</html> <!--Lukke HTML-tag-->

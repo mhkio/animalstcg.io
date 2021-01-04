@@ -1,0 +1,48 @@
+[
+    {
+        "class" : null,
+        "id" : null,
+        "name" : null,
+        "illustrator" : null,
+        "rarity" : null,
+        "hp" : null,
+        "type" : null,
+        "description" : null,
+        "length" : null,
+        "weight" : null,
+        "weakness" : null,
+        "weaknessOperator" : null,
+        "resistance" : null,
+        "resistanceOperator" : null,
+        "retreat" : null,
+        "ability" : {
+            "name" : null,
+            "text" : null,
+            "keywords" : [null]
+        },
+        "attacks" :
+            [
+                [
+                    {
+                    "name" : null,
+                    "cost" : [null],
+                    "text" : null,
+                    "dmg" : null,
+                    "keywords" : [null]
+                    }
+                ],
+
+                [
+                    {
+                    "name" : null,
+                    "cost" : [null],
+                    "text" : null,
+                    "dmg" : null,
+                    "keywords" : [null]
+                    }
+                ]
+            ],
+        "flavour" : null,
+        "evolvesFrom" : null
+    }
+]

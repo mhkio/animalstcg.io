@@ -17,9 +17,9 @@ import content.classes.card_attributes.*;
 
 public class CardDeserializer {
 
-    String[] filepaths = {"carddb/data/bas.json", 
-                          "carddb/data/oce.json",
-                          "carddb/data/ene.json"};
+    String[] filepaths = {"content/carddb/data/bas.json", 
+                          "content/carddb/data/oce.json",
+                          "content/carddb/data/ene.json"};
     private int lineNumber;
     private Map<String, ArrayList<Card>> cardCollection;
     

@@ -5,18 +5,18 @@ import content.carddb.deserializers.CardDeserializer;
 import java.io.File;
 import java.util.Scanner;
 
-// Run with
-// javac classes/tools/DeckBuilder.java && java classes/tools/DeckBuilder
+// Unit test with
+// javac content/classes/tools/DeckBuilder.java && java content/classes/tools/DeckBuilder
 
-class DeckBuilder {
+class DeckManager {
     
     CardDeserializer cardDeserializer;
 
     public static void main(String[] args) {
-        new DeckBuilder();
+        new DeckManager();
     }
 
-    public DeckBuilder() {
+    public DeckManager() {
         cardDeserializer = new CardDeserializer();
         presentMenu();
     }

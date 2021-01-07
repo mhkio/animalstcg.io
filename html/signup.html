@@ -11,6 +11,8 @@
 
     <body>
 
+        
+
         <!-- Header -->
         <header>
 
@@ -51,7 +53,6 @@
                 </div>
 
                 <div class="header-nav">
-
                     <a href="#">
                         <span class="visible-text">
                             <img src="images/fighting_animals_transparent.png" alt=""> Play Game
@@ -71,39 +72,36 @@
 
         <!-- Main content -->
         <main>
-            <div class="landing-page">
-                <section>
-                    <div class="intro-text canvas">
+            <section class="input-form">
+                <div class="card">
+                    <form class="signin">
                         
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Pw-2_g6iqF4?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>             
-                               
-                    </div>
-                </section>
+                        <input type="text" placeholder="Username" name="username" id="username" required>
+                        <br>
+                        <input type="password" placeholder="Password" name="password" id="password" required>
+                        <br>
+                        <input type="password" placeholder="Confirm password" name="confirm-password" id="confirm-password" required>
+                        <br>
+                        <p class="invisible">Passwords don't match.</p>
 
-                <aside>
-                    <div class="active-users canvas">
-                        <h4>Current active users</h4>
-                        <ol class="paragraph">
-                            <li>...</li>
-                            
-                        </ol>
-                    </div>
+                        <input type="submit" value="Register" name="sign-in" class="invisible">
 
-                    <div class="news canvas paragraph">
-                        <h4>News</h4>
-                        <p class="paragraph">Last update Tuesday 5th of January</p>
-                    </div>
-                </aside>
-            </div>
+                    </form>
+
+                    <a href="signin.html">Already a user? Log in here.</a>
+                </div>
+            </section>
         </main>
 
         <!-- Footer -->
-
         <footer>
             <a href="https://github.com/mhkio/animalstcg.io" target=_blank><i class="fab fa-github fa-2x"></i></a>
             <p>The content of this website has been developed and is presented only as an educating purpose.</p>
             <p>This website is in no way affiliated with TPCi, Nintendo, Creatures, or Game Freak.</p>
-
         </footer>
+
+        <!-- Scripts -->
+        <script src="javascript/alert-password.js"></script>
+        <script src="javascript/new-user.js"></script>
     </body>
 </html>

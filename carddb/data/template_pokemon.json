@@ -19,7 +19,7 @@
             "name" : null,
             "text" : null,
             "keywords" : [null]
-        },
+            },
         "attacks" :
             [
                 [
@@ -31,7 +31,6 @@
                     "keywords" : [null]
                     }
                 ],
-
                 [
                     {
                     "name" : null,

@@ -1,20 +1,20 @@
 [
     {
         "class" : 11,
-        "id" : "oce001",
-        "name" : "Generic Jellyfish",
-        "illustrator" : "Magnus", 
+        "id" : "oce011",
+        "name" : "Pet Turtle",
+        "illustrator" : "Magnus",
         "rarity" : 1,
         "hp" : 40,
-        "type" : "C",
-        "description" : "Jellyfish",
-        "length" : 3,
+        "type" : "G",
+        "description" : "Turtle",
+        "length" : 1,
         "weight" : 1,
-        "weakness" : "F",
+        "weakness" : "R",
         "weaknessOperator" : "x2",
         "resistance" : null,
         "resistanceOperator" : null,
-        "retreat" : 1,
+        "retreat" : 2,
         "ability" : {
             "name" : null,
             "text" : null,
@@ -24,11 +24,11 @@
             [
                 [
                     {
-                    "name" : "Smooth Skin",
-                    "cost" : ["C"],
-                    "text" : "Discard an Energy card attached to this Pokemon. If you do, prevent all effects of attack from your opponent's POkemon during their next turn.",
+                    "name" : "Withdraw",
+                    "cost" : ["G"],
+                    "text" : "Until the end of your opponent's next turn, prevent all effects of attacks, including damage, done to this Pokemon. This Pokemon can not use Withdraw during your next turn.",
                     "dmg" : null,
-                    "keywords" : ["DiscardEnergy"]
+                    "keywords" : [null]
                     }
                 ],
                 [
@@ -41,40 +41,40 @@
                     }
                 ]
             ],
-        "flavour" : "These jellies have very mild venom and therefore any jellyfish string from its stinging cells are harmless to humans. In fact, the generic jelly doesn't generally even use their venom to catch food at all!",
+        "flavour" : "The pet turtle is cute, but in an odd way.",
         "evolvesFrom" : null
     },
 
     {
         "class" : 12,
-        "id" : "oce002",
-        "name" : "Flower Jellyfish",
-        "illustrator" : "Magnus", 
-        "rarity" : 2,
+        "id" : "oce012",
+        "name" : "Common Turtle",
+        "illustrator" : "Magnus",
+        "rarity" : 1,
         "hp" : 70,
-        "type" : "C",
-        "description" : "Jellyfish",
-        "length" : 6,
-        "weight" : 1,
-        "weakness" : "F",
+        "type" : "G",
+        "description" : "Turtle",
+        "length" : 7,
+        "weight" : 30,
+        "weakness" : "R",
         "weaknessOperator" : "x2",
-        "resistance" : "W",
-        "resistanceOperator" : "-30",
+        "resistance" : null,
+        "resistanceOperator" : null,
         "retreat" : 2,
         "ability" : {
-            "name" : "Ride the Wave",
-            "text" : "Once during your opponent's turn, if your opponent uses an effect of an Ability, you may have both players draw 1 card. Only 1 Ride the Wave Ability may be used each turn.",
-            "keywords" : []
-        },
+            "name" : "Healing Skin",
+            "text" : "At the beginning of your turn, if this card is in your Active Spot, you may use this Power. Remove 2 damage counters from this Pokemon.",
+            "keywords" : [null]
+            },
         "attacks" :
             [
                 [
                     {
-                    "name" : "Pulse Wave",
-                    "cost" : ["C", "C"],
-                    "text" : "This attack does 10 damage to each of your opponent's Pokemon. Each player switches their Active pokemon with one of their Benched Pokemon.",
+                    "name" : "Inclusive Shell",
+                    "cost" : ["G", "C"],
+                    "text" : "Put 1 of your Pokmeon and all cards attached to it into your hand. Then, put 3 damage counters on this Pokemon.",
                     "dmg" : null,
-                    "keywords" : ["Snipe"]
+                    "keywords" : [null]
                     }
                 ],
                 [
@@ -87,39 +87,39 @@
                     }
                 ]
             ],
-        "flavour" : "These sea jellies are endemic to the Western Pacific, commonly found off the Southern Japan coast and also within the water of Brazil and Argentina.",
-        "evolvesFrom" : "Generic Jellyfish"
+        "flavour" : "Very cute indeed.",
+        "evolvesFrom" : "Pet Turtle"
     },
 
     {
         "class" : 12,
-        "id" : "oce003",
-        "name" : "Crystal Jellyfish",
-        "illustrator" : "Magnus", 
+        "id" : "oce013",
+        "name" : "Snapping Turtle",
+        "illustrator" : "Magnus",
         "rarity" : 3,
-        "hp" : 100,
-        "type" : "C",
-        "description" : "Jellyfish",
-        "length" : 10,
-        "weight" : 12,
-        "weakness" : "F",
+        "hp" : 110,
+        "type" : "G",
+        "description" : "Snapping Turtle",
+        "length" : 1,
+        "weight" : 100,
+        "weakness" : "R",
         "weaknessOperator" : "x2",
-        "resistance" : "L",
+        "resistance" : "F",
         "resistanceOperator" : "-30",
         "retreat" : 3,
         "ability" : {
-            "name" : "Stinging Cells",
-            "text" : "Once during your turn, before you attack, you may use this Ability. Discard 1 card from your hand and 1 Pokemon from your Bench. If you do, your opponent's Active Pokemon is now Paralyzed",
-            "keywords" : []
-        },
+            "name" : "Exoskeleton",
+            "text" : "You may use this Power when your opponent uses and attack. Add -20 to all damage done to this Pokemon.",
+            "keywords" : [null]
+            },
         "attacks" :
             [
                 [
                     {
-                    "name" : "Digest",
-                    "cost" : ["C", "C"],
-                    "text" : "If the Defending Pokemon is Knocked Out by damage from this attack, search your deck for any 2 cards and put it into your Draw Zone.",
-                    "dmg" : 20,
+                    "name" : "Fierce Bite",
+                    "cost" : ["G", "G"],
+                    "text" : "For each damage counter on this Pokemon, subtract 10 damage from this attack. After doing damage, put 3 damage counters on this Pokemon.",
+                    "dmg" : 110,
                     "keywords" : [null]
                     }
                 ],
@@ -133,104 +133,145 @@
                     }
                 ]
             ],
-        "flavour" : "located in the water around North America's coast, this jellyfish species is actually completely colorless, hence its name! This beautiful specimen has around 150 tentacles lining its glass-like bell and in the daylight it looks crystal clear. Although, this transparency belies a brighter side.",
-        "evolvesFrom" : "Flower Jellyfish"
+        "flavour" : "This nasty, chonky creatue is often mistaken of not being harmful. When approached by gullible, humanoid individuals, the Snapping Turtle strikes with lightning fast speed.",
+        "evolvesFrom" : "Common Turtle"
     },
 
     {
         "class" : 11,
-        "id" : "oce004",
-        "name" : "Narcomedusae",
-        "illustrator" : "Magnus", 
+        "id" : "oce014",
+        "name" : "Tiny Marlin",
+        "illustrator" : "Magnus",
         "rarity" : 1,
-        "hp" : 30,
-        "type" : "D",
-        "description" : "Jellyfish",
+        "hp" : 40,
+        "type" : "W",
+        "description" : "Atlantic Blue Marlin",
         "length" : 1,
-        "weight" : 1,
-        "weakness" : "G",
-        "weaknessOperator" : "+20",
+        "weight" : 50,
+        "weakness" : "L",
+        "weaknessOperator" : "-20",
         "resistance" : null,
         "resistanceOperator" : null,
         "retreat" : 0,
         "ability" : {
-            "name" : "Stinging Tentacles",
-            "text" : "You may use this Ability when this Pokemon takes damage from your opponent's attack. Put 2 damage counters on the Defending Pokemon",
-            "keywords" : []
-        },
+            "name" : null,
+            "text" : null,
+            "keywords" : [null]
+            },
         "attacks" :
             [
                 [
                     {
-                    "name" : "Call for Help",
-                    "cost" : ["D"],
-                    "text" : "Draw 1 card from the top of your deck, or search your deck for a Basic Pokemon and put it onto your Bench, then shuffle your deck.",
-                    "dmg" : 10,
+                    "name" : "Double Edged Snout",
+                    "cost" : ["W"],
+                    "text" : "Flip a coin, if heads, draw 3 cards. If tails, your opponent draws up to 2 cards.",
+                    "dmg" : null,
                     "keywords" : [null]
                     }
                 ],
                 [
                     {
                     "name" : null,
-                    "cost" : null,
+                    "cost" : [null],
                     "text" : null,
                     "dmg" : null,
-                    "keywords" : null
+                    "keywords" : [null]
                     }
                 ]
             ],
-        "flavour" : "Known to have a Darth Vader kind of appearance.",
+        "flavour" : "All right, I know one joke. Um, there's a mollusk, see? And he walks up to a sea... Well, he doesn't walk up, he swims up.",
         "evolvesFrom" : null
     },
 
     {
-        "class" : 23,
-        "id" : "oce119",
-        "name" : "Professor Vestre",
-        "illustrator" : "Sebastian",
-        "rarity" : null,
-        "text" : "Reduce the cost of each of your Pokemon's attacks by C until the end of your turn.\nDraw 3 cards.",
-        "keywords" : null        
-    },
-
-    {
-        "class" : 24,
-        "id" : "oce120",
-        "name" : "Spring Tide",
-        "illustrator" : "Sebastian",
-        "rarity" : null,
-        "text" : "Once during your turn, you may attach 2 Basic Energy from your Discard Pile to your Pokemon as you like. Then, your turn ends.",
-        "keywords" : null        
-    },
-
-    {
-        "class" : 21,
-        "id" : "oce126",
-        "name" : "Ocean Current",
-        "illustrator" : "Magnus",
-        "rarity" : null,
-        "text" : "Search your Discard Pile for a Pokemon or a Basic Energy card and put it into your hand.",
-        "keywords" : null        
-    },
-
-    {
-        "class" : 22,
-        "id" : "oce128",
-        "name" : "Tord's Bathing Shoes",
-        "illustrator" : "Sebastian",
-        "rarity" : null,
-        "text" : "This Pokemon's HP is increased by 20.",
-        "keywords" : null        
-    },
-
-    {
-        "class" : 32,
-        "id" : "oce129",
-        "name" : "Flout Energy",
+        "class" : 12,
+        "id" : "oce015",
+        "name" : "Atlantic Marlin",
         "illustrator" : "Magnus",
         "rarity" : 2,
-        "provides" : null,
-        "text" : "This card provies C. While the Pokemon this card is attached to has any Basic Energy cards attached to it, and the Pokemon is not C, this card provides 2 Energy of any type, but not the same type of other Basic Energy cards attached to the Pokemon.",
-        "keywords" : null
+        "hp" : 60,
+        "type" : "W",
+        "description" : "Atlantic Blue Marlin",
+        "length" : 5,
+        "weight" : 50,
+        "weakness" : "L",
+        "weaknessOperator" : "x2",
+        "resistance" : null,
+        "resistanceOperator" : null,
+        "retreat" : 0,
+        "ability" : {
+            "name" : "Disappointing Quality",
+            "text" : "When this Pokemon is Knocked Out, you may use this Power. Choose 1 of your opponent's face down or face up Prize Cards, and reveal it. Your opponent can not take that Prize for knocking out this Pokemon (except if the Prize Card you chose is your opponent's last Prize Card).",
+            "keywords" : [null]
+            },
+        "attacks" :
+            [
+                [
+                    {
+                    "name" : "Stab",
+                    "cost" : ["W"],
+                    "text" : "Flip a coin, if heads, your opponent shuffles 1 card from their hand into their deck.",
+                    "dmg" : 30,
+                    "keywords" : [null]
+                    }
+                ],
+                [
+                    {
+                    "name" : null,
+                    "cost" : [null],
+                    "text" : null,
+                    "dmg" : null,
+                    "keywords" : [null]
+                    }
+                ]
+            ],
+        "flavour" : "There is only 1 kind of Atlantic Marlin. Yet there are 3 in this expansion.",
+        "evolvesFrom" : "Tiny Marlin"
+    },
+
+    {
+        "class" : 12,
+        "id" : "oce016",
+        "name" : "Great Atlantic",
+        "illustrator" : "Magnus",
+        "rarity" : 3,
+        "hp" : 80,
+        "type" : "W",
+        "description" : "Marlin",
+        "length" : 5,
+        "weight" : 818,
+        "weakness" : "L",
+        "weaknessOperator" : "x2",
+        "resistance" : null,
+        "resistanceOperator" : null,
+        "retreat" : 0,
+        "ability" : {
+            "name" : null,
+            "text" : null,
+            "keywords" : [null]
+            },
+        "attacks" :
+            [
+                [
+                    {
+                    "name" : "School Hunt",
+                    "cost" : ["W", "W"],
+                    "text" : "If your opponent has 5 or more Benched Pokemon, discard 1 of them. You choose which to discard.",
+                    "dmg" : null,
+                    "keywords" : [null]
+                    }
+                ],
+                [
+                    {
+                    "name" : "Impaling Spear",
+                    "cost" : ["W", "W"],
+                    "text" : "You may reveal your hand to your opponent. If you do, this attack does 30 damage to 1 of your opponent's Benched Pokemon.",
+                    "dmg" : 50,
+                    "keywords" : [null]
+                    }
+                ]
+            ],
+        "flavour" : "There was this mollusk and he walks up to a sea cucumber. Normally the don't talk, sea cucumbers, but in a joke, everyone talks. So just then, the sea cucumber looks over to the mollusk and says: 'With friend like these, who need anemones?'",
+        "evolvesFrom" : "Atlantic Marlin"
     }
 ]

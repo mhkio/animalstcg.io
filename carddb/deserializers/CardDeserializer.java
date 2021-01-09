@@ -9,62 +9,68 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 
+import content.CardContainer;
 import content.classes.cards.*;
 import content.classes.card_attributes.*;
 
 // Run with
-// javac carddb/deserializers/CardDeserializer.java && java carddb.deserializers.CardDeserializer
+// javac content/carddb/deserializers/CardDeserializer.java && java content.carddb.deserializers.CardDeserializer
 
 public class CardDeserializer {
 
-    String[] filepaths = {"content/carddb/data/bas.json", 
-                          "content/carddb/data/oce.json",
-                          "content/carddb/data/ene.json"};
-    private int lineNumber;
-    private Map<String, ArrayList<Card>> cardCollection;
+    // Files containing card data
+    // Before keywords are properly handled, each attack and ability 
+    // containing an effect, must have a keyword.
+    static String[] filepaths = {
+                            "content/carddb/data/bas.json", 
+                            "content/carddb/data/oce.json",
+                            "content/carddb/data/ene.json"};
+
+    // Number that is tracked for correcting after exceptions
+    static private int lineNumber;
+
+    static private Map<String, ArrayList<Card>> cardCollection;
     
     public static void main(String[] args) { 
         new CardDeserializer();
     }
 
     /**
-     * Constructor method
+     * Constructor method that initializes deserialization.
+     * Creates a BufferedReader and a FileReader for each file we 
+     * deserialize from.
      */
     public CardDeserializer() {
         cardCollection = new HashMap<>();
         for (int i = 0; i < filepaths.length; i++) {
             try {
-                deserialize(new BufferedReader(new FileReader(filepaths[i])), filepaths[i]);
+                deserialize(new BufferedReader(new FileReader(filepaths[i])), 
+                    filepaths[i]);
             } catch (FileNotFoundException f) {
                 System.out.println(filepaths[i] + " not found.");
             }
         }
-        printCardCollection();
+        CardContainer.getAllCards(cardCollection);
+        // CardContainer.printAllCards();
+        // printCardCollection();
     }
 
     /**
      * Method that instantiates deserialization.
-     * @param br A reader. Could be interchanged with a different reader e.g. Scanner.
+     * @param br a reader. Could be interchanged with a different reader e.g. Scanner.
      */
     private void deserialize(BufferedReader br, String filepath) {
         lineNumber = 0;
         String line;
         String subclass;
-        try {
+        Card card;
+        skipLines(br, 2);
+        while ((line = readLine(br)) != null) {
+            subclass = readLineData(line);
+            card = deserializeCard(br, subclass);
+            addToCardCollection(card);
             skipLines(br, 2);
-            while ((line = readLine(br)) != null) {
-                subclass = readLineData(line);
-                addToCardCollection(getSubclassString(subclass), 
-                    deserializeCard(br, subclass));
-                skipLines(br, 2);
-            }  
-        } catch (Exception e) {
-            System.out.println("Line " + (lineNumber-1) + " in " +
-                filepath + " creates an ." + e.toString());
-                System.exit(0);
-        }
-
-        System.out.println("Deserialized " + filepath);
+        }  
     }
 
     /**
@@ -94,7 +100,7 @@ public class CardDeserializer {
       * @return Card of proper subclass.
       * @throws IOException
       */
-    private Card deserializeCard(BufferedReader br, String subclass) throws IOException {
+    private Card deserializeCard(BufferedReader br, String subclass) {
         if (subclass.equals("11")) return deserializeBasic(br);
         if (subclass.equals("12")) return deserializeEvolution(br);
         if (subclass.equals("21")) return deserializeItem(br);
@@ -108,9 +114,15 @@ public class CardDeserializer {
 
     // Card instantiation methods --------------------------
 
-    private Basic deserializeBasic(BufferedReader br) throws IOException {
+    private Basic deserializeBasic(BufferedReader br) {
         //System.out.println("Deserializing Pokemon...");
         String[] data = createData(br, 29);
+
+        /*
+        System.out.println(
+            data[0] + " : " + data[0].getClass()
+        );
+        */
 
         Ability ability = deserializeAbility(Arrays.copyOfRange(data, 14, 17));
         Attack attack1 = deserializeAttack(Arrays.copyOfRange(data, 17, 22));
@@ -123,7 +135,7 @@ public class CardDeserializer {
             data[12], toInt(data[13]), ability, attack1, attack2, data[27]);
     }
 
-    private Evolution deserializeEvolution(BufferedReader br) throws IOException {
+    private Evolution deserializeEvolution(BufferedReader br) {
         //System.out.println("Deserializing Pokemon...");
         String[] data = createData(br, 29);
 
@@ -138,7 +150,7 @@ public class CardDeserializer {
             data[28]);
     }
 
-    private Item deserializeItem(BufferedReader br) throws IOException {
+    private Item deserializeItem(BufferedReader br) {
         //System.out.println("Deserializing Item...");
         String[] data = createData(br, 6);
         String[] keywords = createKeywords(data[5]);
@@ -146,35 +158,35 @@ public class CardDeserializer {
             data[4], keywords);
     }
 
-    private Tool deserializeTool(BufferedReader br) throws IOException {
+    private Tool deserializeTool(BufferedReader br) {
         //System.out.println("Deserializing Tool...");
         String[] data = createData(br, 6);
         return new Tool(data[0], data[1], data[2], toInt(data[3]),
             data[4], createKeywords(data[5]));
     }
 
-    private Supporter deserializeSupporter(BufferedReader br) throws IOException {
+    private Supporter deserializeSupporter(BufferedReader br) {
         //System.out.println("Deserializing Supporter...");
         String[] data = createData(br, 6);
         return new Supporter(data[0], data[1], data[2], toInt(data[3]),
             data[4], createKeywords(data[5]));
     }
 
-    private Stadium deserializeStadium(BufferedReader br) throws IOException {
+    private Stadium deserializeStadium(BufferedReader br) {
         //System.out.println("Deserializing Stadium...");
         String[] data = createData(br, 6);
         return new Stadium(data[0], data[1], data[2], toInt(data[3]),
             data[4], createKeywords(data[5]));
     }
 
-    private Energy deserializeBasicEnergy(BufferedReader br) throws IOException {
+    private Energy deserializeBasicEnergy(BufferedReader br) {
         //System.out.println("Deserializing Basic Energy...");
         String data[] = createData(br, 6);
         return new Energy(data[0], data[1], data[2], toInt(data[3]),
             createCharArray(data[4]), data[5]);
     }
 
-    private SpecialEnergy deserializeSpecialEnergy(BufferedReader br) throws IOException {
+    private SpecialEnergy deserializeSpecialEnergy(BufferedReader br) {
         //System.out.println("Deserializing Special Energy...");
         String data[] = createData(br, 7);
         return new SpecialEnergy(data[0], data[1], data[2], toInt(data[3]),
@@ -182,6 +194,8 @@ public class CardDeserializer {
     }
 
     private Attack deserializeAttack(String[] data) {
+
+        
 
         // No attack
         if (data[0] == null) return null;
@@ -200,7 +214,6 @@ public class CardDeserializer {
             return new EffectAttack(data[0], cost, data[2],
                 keywords);
         }
-
         // Instance of EffectDamageAttack
         return new EffectDamageAttack(data[0], cost, data[2], 
             Integer.parseInt(data[3]), keywords);
@@ -214,11 +227,11 @@ public class CardDeserializer {
 
     // Utility methods -------------------------------
 
-    private void addToCardCollection(String subclass, Card card) {
-        if (cardCollection.get(subclass) == null) {
-            cardCollection.put(subclass, new ArrayList<>());
+    private void addToCardCollection(Card card) {
+        if (cardCollection.get(card.getSet()) == null) {
+            cardCollection.put(card.getSet(), new ArrayList<>());
         }
-        cardCollection.get(subclass).add(card);
+        cardCollection.get(card.getSet()).add(card);
     }
 
     private void printCardCollection() {
@@ -234,7 +247,7 @@ public class CardDeserializer {
         return "Energy";
     }
 
-    private String[] createData(BufferedReader br, int size) throws IOException {
+    private String[] createData(BufferedReader br, int size) {
         String[] data = new String[size];
         int counter = 0;
         String line;
@@ -285,15 +298,22 @@ public class CardDeserializer {
         return s.split(" ");
     }
 
-    private void skipLines(BufferedReader br, int num) throws IOException {
+    private void skipLines(BufferedReader br, int num) {
         for (int i = 0; i < num; i++) {
             readLine(br);
         }
     }
 
-    private String readLine(BufferedReader br) throws IOException {
+    private String readLine(BufferedReader br) {
+        String line = "";
+        try {
+            line = br.readLine();
+        } catch (IOException e) {
+            System.out.println("IOException caught at line " + lineNumber +
+                ": " + line);
+        }
         lineNumber++;
-        return br.readLine();
+        return line;
     }
 
     public Map<String, ArrayList<Card>> getCardCollection() {

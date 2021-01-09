@@ -1,7 +1,11 @@
 package content.classes.cards;
-import java.io.Serializable;
 
-public abstract class Card implements Serializable {
+import java.io.Serializable;
+import java.util.Map;
+
+import content.CardContainer;
+
+public abstract class Card implements Serializable, Cloneable, Comparable<Card> {
     private static final long serialVersionUID = 0;
     protected String id;
     protected String name;
@@ -15,6 +19,11 @@ public abstract class Card implements Serializable {
         this.rarity = rarity;
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
     protected String getSetName() {
         String abbr = id.substring(0, 4);
         if (abbr.equals("bas")) return "Base Set";
@@ -22,8 +31,16 @@ public abstract class Card implements Serializable {
         return null;
     }
 
-    protected String getSetNumber() {
-        return id.substring(3, 6);
+    public String getSet() {
+        return id.substring(0, 3);
+    }
+
+    public int getSetNumber() {
+        return Integer.parseInt(id.substring(3, 6));
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -32,4 +49,15 @@ public abstract class Card implements Serializable {
         s.append(id.toUpperCase() + " " + name);
         return s.toString();
     }
+
+    @Override
+    public int compareTo(Card card) {
+        Map<String, Integer> sets = CardContainer.getSets();
+        if (sets.get(this.getSet()) < sets.get(card.getSet())) return 1;
+        if (sets.get(this.getSet()) > sets.get(card.getSet())) return -1;
+        if (this.getSetNumber() < card.getSetNumber()) return 1;
+        if (this.getSetNumber() > card.getSetNumber()) return -1;
+        return 0;
+    }
+    
 }

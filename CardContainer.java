@@ -7,11 +7,20 @@ import java.util.ArrayList;
 import content.classes.cards.*;
 
 // Unit test with
-// javac content.CardContainer && java content/CardContainer
+// javac content/CardContainer.java && java content/CardContainer
 
 public class CardContainer {
     private static Map<String, ArrayList<Card>> allCards = new HashMap<>();
     private static Map<String, Integer> sets = new HashMap<>();
+
+    /**
+     * Method invoked from CardDeserializer after successful
+     * deserialization.
+     * @param map String setName : ArrayList<Card>
+     */
+    public static void getAllCards(Map<String, ArrayList<Card>> map) {
+        allCards = map;
+    }
 
     public static Map<String, ArrayList<Card>> getContainer() {
         return allCards;
@@ -25,12 +34,6 @@ public class CardContainer {
         }
         return sets;
     }
-
-    public static void getAllCards(Map<String, ArrayList<Card>> map) {
-        allCards = map;
-    }
-
-    
 
     public static void printAllCards() {
         for (String s : allCards.keySet()) {

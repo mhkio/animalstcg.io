@@ -19,9 +19,6 @@ public class Deck {
         cardMap = new HashMap<>();
     }
 
-    // TODO: Print as sorted hashmap: Iterate trough arraylist and 
-    // TODO: get corresponding card from map. 
-
     public boolean addCard(Card card) {
         try {
             cards.add(card);
@@ -85,7 +82,8 @@ public class Deck {
         return null;
     }
 
-    // TODO: 
+    // TODO: Print as sorted hashmap: Iterate trough arraylist/PQ and 
+    // get corresponding card from map. 
     /*
     public void createUniqueList() {
         ArrayList<Card> array = new ArrayList<>();

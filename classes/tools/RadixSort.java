@@ -17,7 +17,7 @@ public class RadixSort {
         for (Card card : array) {
             if (card instanceof Pokemon) buckets.get(0).add(card);
             if (card instanceof Trainer) buckets.get(1).add(card);
-            buckets.get(2).add(card);
+            if (card instanceof Energy) buckets.get(2).add(card);
         }
 
         array.clear();

@@ -5,46 +5,25 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import content.carddb.deserializers.CardDeserializer;
 import content.CardContainer;
 import content.classes.cards.*;
 
 // Unit test with
 // javac content/classes/tools/DeckManager.java && java content.classes.tools.DeckManager
 
-class DeckManager {
+public class DeckManager {
     
-    CardDeserializer cardDeserializer;
-    Scanner sc;
-
-    public static void main(String[] args) {
-        new DeckManager(args[0]);
-    }
-
-    public DeckManager(String username) {
-        cardDeserializer = new CardDeserializer(); // Remove
-        presentMenu(username);
-    }
-
-    private void presentMenu(String username) {
-        ArrayList<Deck> availableDecks = readDeckFile(username);
-        printAvailableDecks(username, availableDecks);
-        
-        Scanner sc = new Scanner(System.in);
-        //System.out.println("Choose deck:");
-        
-        sc.close();
-    }
-
     /**
      * Method that reads and creates deck of the containing saved decks of given username.
      * @param username
      * @return a list of created decks
      */
     private ArrayList<Deck> readDeckFile(String username) {
+        Scanner sc = null;
         try {
             sc = new Scanner(new File("content/classes/tools/decks/" + username + ".txt"));
         } catch (FileNotFoundException f) {
+            // Is not supposed to happen after login.
             System.out.println("Username don't exist or " + username + ".txt does not exist in directory.");
         }
 
@@ -99,7 +78,7 @@ class DeckManager {
      * @param username
      * @param decks
      */
-    private void printAvailableDecks(String username, ArrayList<Deck> decks) {
+    public void printAvailableDecks(String username, ArrayList<Deck> decks) {
         String string;
         if (decks.size() == 1) {
             string = decks.size() + " available deck for " + username + ": ";

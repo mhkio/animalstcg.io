@@ -13,34 +13,23 @@ import content.CardContainer;
 import content.classes.cards.*;
 import content.classes.card_attributes.*;
 
-// Run with
+// Unit test with
 // javac content/carddb/deserializers/CardDeserializer.java && java content.carddb.deserializers.CardDeserializer
 
 public class CardDeserializer {
 
-    // Files containing card data
-    // Before keywords are properly handled, each attack and ability 
-    // containing an effect, must have a keyword.
-    static String[] filepaths = {
-                            "content/carddb/data/bas.json", 
-                            "content/carddb/data/oce.json",
-                            "content/carddb/data/ene.json"};
-
     // Number that is tracked for correcting after exceptions
     static private int lineNumber;
 
+    // SetName : ArrayList<Card>
     static private Map<String, ArrayList<Card>> cardCollection;
-    
-    public static void main(String[] args) { 
-        new CardDeserializer();
-    }
 
     /**
-     * Constructor method that initializes deserialization.
+     * Method that initializes deserialization.
      * Creates a BufferedReader and a FileReader for each file we 
-     * deserialize from.
+     * deserialize from. Fills CardContainer with data.
      */
-    public CardDeserializer() {
+    public void deserializeAllCards(String[] filepaths) {
         cardCollection = new HashMap<>();
         for (int i = 0; i < filepaths.length; i++) {
             try {
@@ -87,7 +76,6 @@ public class CardDeserializer {
             s = s.replace("\"", ""); s = s.replace("[", "");
             s = s.replace("]", "");
             return s.replace(",", "");
-            
             //return s.replaceAll("([[]\",])", "");
         }
         return null;        
@@ -117,12 +105,6 @@ public class CardDeserializer {
     private Basic deserializeBasic(BufferedReader br) {
         //System.out.println("Deserializing Pokemon...");
         String[] data = createData(br, 29);
-
-        /*
-        System.out.println(
-            data[0] + " : " + data[0].getClass()
-        );
-        */
 
         Ability ability = deserializeAbility(Arrays.copyOfRange(data, 14, 17));
         Attack attack1 = deserializeAttack(Arrays.copyOfRange(data, 17, 22));
@@ -194,9 +176,6 @@ public class CardDeserializer {
     }
 
     private Attack deserializeAttack(String[] data) {
-
-        
-
         // No attack
         if (data[0] == null) return null;
 
@@ -211,8 +190,7 @@ public class CardDeserializer {
 
         // Instance of EffectAttack
         if (data[3] == null && data[4] != null) {
-            return new EffectAttack(data[0], cost, data[2],
-                keywords);
+            return new EffectAttack(data[0], cost, data[2], keywords);
         }
         // Instance of EffectDamageAttack
         return new EffectDamageAttack(data[0], cost, data[2], 
@@ -234,12 +212,14 @@ public class CardDeserializer {
         cardCollection.get(card.getSet()).add(card);
     }
 
+    // Not used
     private void printCardCollection() {
         for (String s : cardCollection.keySet()) {
             System.out.println(s + " : " + cardCollection.get(s).size());
         }
     }
 
+    // Not used
     private String getSubclassString(String subclass) {
         int num = Integer.parseInt(subclass);
         if (num >= 10 && num < 20) return "Pokemon";
@@ -251,10 +231,9 @@ public class CardDeserializer {
         String[] data = new String[size];
         int counter = 0;
         String line;
-
+        
         while (counter < data.length) {
             line = readLine(br);
-
             if (checkInput(line)) {
                 line = readLineData(line);
                 data[counter] = line.equals("null") ? null : line;
@@ -263,7 +242,6 @@ public class CardDeserializer {
         }
 
         readLine(br);
-
         return data;
     }
 

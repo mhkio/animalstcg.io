@@ -18,4 +18,9 @@ public class Evolution extends Pokemon {
         this.evolvesFrom = evolvesFrom;
     }
 
+    public boolean canEvolveFrom(Pokemon pokemon) {
+        if (evolvesFrom.equals(pokemon.getName())) return true;
+        return false;
+    }
+
 }

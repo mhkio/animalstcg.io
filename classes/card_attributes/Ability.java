@@ -14,4 +14,12 @@ public class Ability {
     public String getName() {
         return name;
     }
+
+    public String getText() {
+        return text;
+    }
+
+    public String[] getKeywords() {
+        return keywords;
+    }
 }

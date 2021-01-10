@@ -54,25 +54,36 @@ public class Server {
         messageDigest = MessageDigest.getInstance("SHA-512");
         usersAndPasswords = readUsersAndPasswords();
         new CardDeserializer().deserializeAllCards(FILEPATHS);
-        presentMenu();
+        presentMenu(new Scanner(System.in));
     }
 
     // --- User interface methods --- 
 
-    private void presentMenu() {
-        Scanner sc = new Scanner(System.in);
+    private void presentMenu(Scanner sc) {
         System.out.print("1. Log in\n2. Create new user\n   >> ");
         int input = sc.nextInt();
-        if (input == 1) logIn(sc);
-        if (input == 2) newUser(sc);
+        if (input == 1) if (!logIn(sc)) presentMenu(sc);
+        if (input == 2) if (!newUser(sc)) presentMenu(sc);
         sc.close();
     }
 
-    public boolean logIn(Scanner sc) {
+    private boolean logIn(Scanner sc) {
+        System.out.print("Enter username: ");
+        String username = sc.next();
+        System.out.print("Enter password: ");
+        String password = hashPassword(sc.next());
+        if (usersAndPasswords.containsKey(username)) {
+            if (usersAndPasswords.get(username).equals(password)) {
+                System.out.println("Login successful.");
+            }
+        } else {
+            System.out.println("Username '" + username + "' does not exist.");
+            return false;
+        }
         return true;
     }
 
-    public boolean newUser(Scanner sc) {
+    private boolean newUser(Scanner sc) {
         System.out.print("Enter desired username: ");
         String username = sc.next();
         System.out.print("Enter desired password: ");
@@ -80,10 +91,13 @@ public class Server {
         if (usersAndPasswords.containsKey(username)) {
             System.out.println("Error: username '" + username + "' already exist.");
             return false;
-        } else {
-            usersAndPasswords.put(username, password);
-            writeToCredentialFile(username, password);
         }
+        if (foundInvalidChars(username)) {
+            System.out.println("Error: some characters in username are invalid.");
+            return false;
+        }
+        usersAndPasswords.put(username, password);
+        writeToCredentialFile(username, password);
         return true;
     }
 
@@ -166,6 +180,23 @@ public class Server {
             System.out.println(e);
         }
         return sb.toString();
+    }
+
+    /**
+     * Method to found invalid characters in username
+     * @param string username 
+     * @return true if invalid characters are in username, otherwise false.
+     */
+    private boolean foundInvalidChars(String string) {
+        String INVALID_CHARS = " ";
+        for (int i = 0; i < string.length(); i++) {
+            for (int j = 0; j < INVALID_CHARS.length(); j++) {
+                if (string.charAt(i) == INVALID_CHARS.charAt(j)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private int findNumOfLinesInFile(BufferedReader br) {

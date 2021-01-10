@@ -1,6 +1,7 @@
 package content.classes.cards;
 
-import content.classes.card_attributes.*;
+import content.classes.cards.card_attributes.Ability;
+import content.classes.cards.card_attributes.Attack;
 
 public class Basic extends Pokemon {
     private static final long serialVersionUID = 11;

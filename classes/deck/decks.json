@@ -1,0 +1,226 @@
+[
+    {
+        "username" : "dummy1",
+        "numberOfDecks" : 2,
+        "decks" : [
+            {
+                "name" : "Grass deck",
+                "list" : [
+                    "4 ene001",
+                    "4 oce002",
+                    "4 oce003",
+                    "4 oce004",
+                    "4 ene005",
+                    "4 oce006",
+                    "4 ene007",
+                    "4 oce008",
+                    "4 oce009",
+                    "4 oce010",
+                    "4 oce011",
+                    "4 oce012",
+                    "4 oce013",
+                    "4 oce014",
+                    "4 oce015"
+                ]
+            },
+            {
+                "name" : "Water deck",
+                "list" : [
+                    "4 ene005",
+                    "4 ene007",
+                    "4 ene002",
+                    "4 ene003",
+                    "4 oce006",
+                    "4 oce003",
+                    "4 oce002",
+                    "4 oce001",
+                    "4 oce010",
+                    "4 oce014",
+                    "4 oce011",
+                    "4 oce015",
+                    "4 oce008",
+                    "4 oce009",
+                    "4 ene001"
+                ]
+            }
+        ]
+    },
+    {
+        "username" : "dummy2",
+        "numberOfDecks" : 1,
+        "decks" : [
+            {
+                "name" : "Metal deck",
+                "list" : [
+                    "4 ene004",
+                    "4 oce002",
+                    "4 oce003",
+                    "4 oce004",
+                    "4 ene005",
+                    "4 oce006",
+                    "4 ene007",
+                    "4 oce008",
+                    "4 oce009",
+                    "4 oce010",
+                    "4 oce011",
+                    "4 oce012",
+                    "4 oce013",
+                    "4 oce014",
+                    "4 oce015"
+                ]
+            }
+        ]
+    },
+    {
+        "username" : "admin",
+        "numberOfDecks" : 2,
+        "decks" : [
+            {
+                "name" : "Grass deck",
+                "list" : [
+                    "4 ene001",
+                    "4 oce002",
+                    "4 oce003",
+                    "4 oce004",
+                    "4 ene005",
+                    "4 oce006",
+                    "4 ene007",
+                    "4 oce008",
+                    "4 oce009",
+                    "4 oce010",
+                    "4 oce011",
+                    "4 oce012",
+                    "4 oce013",
+                    "4 oce014",
+                    "4 oce015"
+                ]
+            },
+            {
+                "name" : "Water deck",
+                "list" : [
+                    "4 ene005",
+                    "4 ene007",
+                    "4 ene002",
+                    "4 ene003",
+                    "4 oce006",
+                    "4 oce003",
+                    "4 oce002",
+                    "4 oce001",
+                    "4 oce010",
+                    "4 oce014",
+                    "4 oce011",
+                    "4 oce015",
+                    "4 oce008",
+                    "4 oce009",
+                    "4 ene001"
+                ]
+            }
+        ]
+    },
+    {
+        "username" : "jostein123",
+        "numberOfDecks" : 5,
+        "decks" : [
+            {
+                "name" : "Grass deck",
+                "list" : [
+                    "4 ene001",
+                    "4 oce002",
+                    "4 oce003",
+                    "4 oce004",
+                    "4 ene005",
+                    "4 oce006",
+                    "4 ene007",
+                    "4 oce008",
+                    "4 oce009",
+                    "4 oce010",
+                    "4 oce011",
+                    "4 oce012",
+                    "4 oce013",
+                    "4 oce014",
+                    "4 oce015"
+                ]
+            },
+            {
+                "name" : "Water deck",
+                "list" : [
+                    "4 ene005",
+                    "4 ene007",
+                    "4 ene002",
+                    "4 ene003",
+                    "4 oce006",
+                    "4 oce003",
+                    "4 oce002",
+                    "4 oce001",
+                    "4 oce010",
+                    "4 oce014",
+                    "4 oce011",
+                    "4 oce015",
+                    "4 oce008",
+                    "4 oce009",
+                    "4 ene001"
+                ]
+            },
+            {
+                "name" : "Elias deck",
+                "list" : [
+                    "4 ene001",
+                    "4 oce002",
+                    "4 oce003",
+                    "4 oce004",
+                    "4 ene005",
+                    "4 oce006",
+                    "4 ene007",
+                    "4 oce008",
+                    "4 oce009",
+                    "4 oce010",
+                    "4 oce011",
+                    "4 oce012",
+                    "4 oce013",
+                    "4 oce014",
+                    "4 oce015"
+                ]
+            },
+            {
+                "name" : "Blue Whale stall",
+                "list" : [
+                    "4 ene001",
+                    "4 oce002",
+                    "4 oce003",
+                    "4 oce004",
+                    "4 ene005",
+                    "4 oce006",
+                    "4 ene007",
+                    "4 oce008",
+                    "4 oce009",
+                    "4 oce010",
+                    "4 oce011",
+                    "4 oce012",
+                    "4 oce013",
+                    "4 oce014",
+                    "4 oce015"
+                ]
+            },
+            {
+                "name" : "Flying Fish",
+                "list" : [
+                    "4 ene001",
+                    "4 oce002",
+                    "4 oce003",
+                    "4 oce004",
+                    "4 ene005",
+                    "4 oce006",
+                    "4 ene007",
+                    "4 oce008",
+                    "4 oce009",
+                    "4 oce010",
+                    "4 oce011",
+                    "4 oce012",
+                    "4 oce013",
+                    "4 oce014",
+                    "4 oce015"
+                ]
+            }
+        ]
+    }
+]

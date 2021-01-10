@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 import content.CardContainer;
 import content.classes.cards.*;
-import content.classes.card_attributes.*;
+import content.classes.cards.card_attributes.*;
 
 // Unit test with
 // javac content/carddb/deserializers/CardDeserializer.java && java content.carddb.deserializers.CardDeserializer

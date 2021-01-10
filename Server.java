@@ -1,237 +1,122 @@
 package content;
 
-// import java.security.SecureRandom;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.nio.charset.StandardCharsets;
-
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
 import java.util.Scanner;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.FileReader;
 
 import content.users.User;
+import content.users.CredentialManager;
 import content.carddb.deserializers.CardDeserializer;
-import content.classes.tools.DeckManager;
+import content.classes.deck.DeckManager;
+import content.classes.deck.Deck;
+import content.tools.JsonHandler;
 
 // Run with
 // javac content/Server.java && java content/Server 
 
 public class Server {
-    private ArrayList<User> users;
-    private Map<String, String> usersAndPasswords;
+    private static ArrayList<User> users;
     private DeckManager deckManager;
-
-    //private SecureRandom random;
-    private MessageDigest messageDigest;
+    private ArrayList<Deck> allDecks;
+    private CredentialManager credentialManager;
 
     // Files containing card data.
     // Before keywords are properly handled, each attack and ability 
     // containing an effect, must have a keyword.
     static String[] FILEPATHS = {
-        "content/carddb/data/bas.json", 
-        "content/carddb/data/oce.json",
-        "content/carddb/data/ene.json"
+                                    "content/carddb/data/bas.json", 
+                                    "content/carddb/data/oce.json",
+                                    "content/carddb/data/ene.json"
         };
 
-    static String CREDENTIAL_PATH = "content/users/credentials.json";
 
-    public static void main(String[] args) throws NoSuchAlgorithmException,
-        FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException {
         new Server();
     }
 
-    public Server() throws NoSuchAlgorithmException, FileNotFoundException {
-        users = new ArrayList<>();
-        deckManager = new DeckManager();
-        //random = new SecureRandom();
-        messageDigest = MessageDigest.getInstance("SHA-512");
-        usersAndPasswords = readUsersAndPasswords();
+    /**
+     * Constructor method that instantiates users, cards and decks.
+     */
+    public Server() {
+
+        // Load cards
+        JsonHandler.instantiate(this);
         new CardDeserializer().deserializeAllCards(FILEPATHS);
+
+        credentialManager = new CredentialManager();
+        deckManager = new DeckManager();
+
+        // Load users
+        users = credentialManager.getUsers();
+
+        // Load decks
+        JsonHandler.readAllDecks();
+        allDecks = deckManager.getDecksFromUsers(users);
+
+        // Present menu
         presentMenu(new Scanner(System.in));
     }
 
     // --- User interface methods --- 
 
     private void presentMenu(Scanner sc) {
-        System.out.print("1. Log in\n2. Create new user\n   >> ");
-        int input = sc.nextInt();
-        if (input == 1) if (!logIn(sc)) presentMenu(sc);
-        if (input == 2) if (!newUser(sc)) presentMenu(sc);
+        User user = presentUserLogin(sc);
+        presentUserChoices(sc, user);
         sc.close();
     }
 
-    private boolean logIn(Scanner sc) {
-        System.out.print("Enter username: ");
-        String username = sc.next();
-        System.out.print("Enter password: ");
-        String password = hashPassword(sc.next());
-        if (usersAndPasswords.containsKey(username)) {
-            if (usersAndPasswords.get(username).equals(password)) {
-                System.out.println("Login successful.");
-            }
-        } else {
-            System.out.println("Username '" + username + "' does not exist.");
-            return false;
+    private void presentUserChoices(Scanner sc, User user) {
+        System.out.print("\n1. Deck Manager\n   >> ");
+        int input = sc.nextInt();
+        if (input == 1) {
+            Deck deck = presentDecks(sc, user);
+            System.out.println("Chose " + deck + ".");
         }
-        return true;
+        // Stoppet her -----------------------------------------------------
     }
 
-    private boolean newUser(Scanner sc) {
-        System.out.print("Enter desired username: ");
-        String username = sc.next();
-        System.out.print("Enter desired password: ");
-        String password = hashPassword(sc.next());
-        if (usersAndPasswords.containsKey(username)) {
-            System.out.println("Error: username '" + username + "' already exist.");
-            return false;
-        }
-        if (foundInvalidChars(username)) {
-            System.out.println("Error: some characters in username are invalid.");
-            return false;
-        }
-        usersAndPasswords.put(username, password);
-        writeToCredentialFile(username, password);
-        return true;
+    private Deck presentDecks(Scanner sc, User user) {
+        System.out.println("Choose a deck.");
+        deckManager.printAvailableDecks(user);
+        System.out.print("    >> ");
+        return user.getDecks().get(sc.nextInt() - 1);
     }
 
-    /**
-     * Method that reads user data from file 'users/credentials.json'.
-     * The file will (hopefully) be removed before pushing. 
-     * @return map of usernames and passwords
-     */
-    private Map<String, String> readUsersAndPasswords() throws FileNotFoundException {
-        Map<String, String> map = new HashMap<>();
-        Scanner sc = new Scanner(new File(CREDENTIAL_PATH));
-        String username, password;
-        String[] line;
-        sc.nextLine(); sc.nextLine();
-
-        // Add usernames and password to map and ArrayList users
-        while (sc.hasNext()) {
-            line = sc.nextLine().split(":");
-            username = sanitize(line[1]);
-            users.add(new User(username));
-            line = sc.nextLine().split(":");
-            password = sanitize(line[1]);
-            map.put(username, password);
-            sc.nextLine(); sc.nextLine();
-        }
-        return map;
-    }
-
-    /**
-     * Method that hashes password.
-     * Source: https://www.baeldung.com/java-password-hashing
-     */
-    private String hashPassword(String password) {
-        //byte[] salt = new byte[16];
-        //random.nextBytes(salt);
-        //messageDigest.update(salt);
-        byte[] hashCode = messageDigest.digest(password.getBytes(StandardCharsets.UTF_8));
-        return getStringFromBytes(hashCode);
-    }
-
-    private String getStringFromBytes(byte[] bytes) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < bytes.length; i++) {
-            sb.append(bytes[i]);
-        }
-        return sb.toString();
-    }
-
-    /**
-     * Method that adds new username and password in .json format
-     */
-    private void writeToCredentialFile(String username, String password) {
-        try {
-            String string = copyFile();
-            FileWriter writer = new FileWriter(CREDENTIAL_PATH);
-            StringBuilder sb = new StringBuilder();
-            writer.write(string);
-            writer.write("    },\n    {\n");
-            writer.write("        \"username\" : \"" + username + "\",\n");
-            writer.write("        \"password\" : \"" + password + "\"\n");
-            writer.write("    }\n]");
-            writer.close();
-        } catch (IOException i) {
-            System.out.println(i);
-        }
-    }
-
-    private String copyFile() {
-        StringBuilder sb = new StringBuilder();
-        try {
-            int numOfLines = findNumOfLinesInFile(
-                new BufferedReader(new FileReader(CREDENTIAL_PATH)));
-            BufferedReader br = 
-                new BufferedReader(new FileReader(CREDENTIAL_PATH));
-            for (int i = 0; i < numOfLines; i++) {
-                sb.append(br.readLine() + "\n");
-            }
-            br.close();
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-        return sb.toString();
-    }
-
-    /**
-     * Method to found invalid characters in username
-     * @param string username 
-     * @return true if invalid characters are in username, otherwise false.
-     */
-    private boolean foundInvalidChars(String string) {
-        String INVALID_CHARS = " ";
-        for (int i = 0; i < string.length(); i++) {
-            for (int j = 0; j < INVALID_CHARS.length(); j++) {
-                if (string.charAt(i) == INVALID_CHARS.charAt(j)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private int findNumOfLinesInFile(BufferedReader br) {
-        int num = 0; 
-        try {
-            while (br.readLine() != null) num++;
-            br.close();
-        } catch (IOException i) {
-            System.out.println(i);
+    private User presentUserLogin(Scanner sc) {
+        String username = "";
+        System.out.print("1. Log in\n2. Create new user\n   >> ");
+        int input = sc.nextInt();
+        if (input == 1) {
+            username = credentialManager.logIn(sc);
+            if (username == null) presentMenu(sc);
         } 
-        return num - 2;
+        if (input == 2) {
+            credentialManager.newUser(sc);
+            presentMenu(sc);
+        }
+        System.out.print("Welcome, " + username + ".");
+        return getUserFromString(username);
     }
 
-    private void printAllUsersAndPasswords() {
-        for (String username : usersAndPasswords.keySet()) {
-            System.out.println(username + " : " + usersAndPasswords.get(username));
+    // Methods for debugging
+
+    private void printAllUsers() {
+        int num = 1;
+        for (User user : users) {
+            System.out.println("User " + num++ + ": " + user.getUsername());
         }
     }
 
-    private void printFile(File file) {
-        try {
-            Scanner sc = new Scanner(file);
-            while (sc.hasNext()) {
-                System.out.println(sc.nextLine());
+    public static ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public static User getUserFromString(String username) {
+        for (User user : users) {
+            if (username.equals(user.getUsername())) {
+                return user;
             }
-        } catch (Exception e) {
-
         }
-    }
-
-    // TODO: Replace with regular expression
-    private String sanitize(String string) {
-        string = string.replace("\"", "");
-        string = string.replace(",", "");
-        string = string.replace(" ", "");
-        return string;
+        return null;
     }
 }

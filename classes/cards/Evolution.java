@@ -1,6 +1,6 @@
 package content.classes.cards;
 
-import content.classes.card_attributes.*;
+import content.classes.cards.card_attributes.*;
 
 public class Evolution extends Pokemon {
     private static final long serialVersionUID = 12;
